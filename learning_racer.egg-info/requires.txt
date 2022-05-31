@@ -1,0 +1,26 @@
+pyyaml
+gym~=0.17.1
+stable_baselines3==1.1.0
+gym-donkeycar@ git+https://github.com/tawnkramer/gym-donkeycar.git#egg=gym-donkeycar
+
+[jetpack]
+posix_ipc~=1.0.4
+
+[osx]
+opencv-python
+torch==1.4.0
+torchvision==0.5.0
+
+[ubuntu]
+opencv-python
+torch==1.4.0
+torchvision==0.5.0
+
+[window-gpu]
+opencv-python
+torchvision==0.5.0
+
+[windows]
+opencv-python
+torch==1.4.0
+torchvision==0.5.0

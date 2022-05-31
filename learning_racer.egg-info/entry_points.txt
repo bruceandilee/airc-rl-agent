@@ -1,0 +1,3 @@
+[console_scripts]
+racer = learning_racer.racer:racer_func
+
