@@ -22,19 +22,23 @@ then
   export JETBOT_LEARNING_RACER_MEMORY=2500m
 fi
 
-sudo docker run --gpus all -it -d \
-      --restart always \
-      --runtime nvidia \
+CONTAINER_IMAGE=""
+
+sudo docker run --runtime nvidia --gpus all -it -d --name learning_racer \
       --network host \
       --privileged \
-#     --device /dev/video* \
-      --volume /dev/bus/usb:/dev/bus/usb \
-      --volume /tmp/argus_socket:/tmp/argus_socket \
       -p 8888:8888 \
       -v ~/:/workspace \
+      -v /dev/bus/usb:/dev/bus/usb \
+      -v /tmp/argus_sockert:/tmp/argus_socket \
       --workdir /workspace \
-      --name=learning_racer \
       --memory="$JETBOT_LEARNING_RACER_MEMORY" \
       --memory-swap="$JETBOT_LEARNING_RACER_MEMORY_SWAP" \
-#      --env JETBOT_DEFAULT_CAMERA="$JETBOT_CAMERA" \
-      learning_racer:"$L4T_VERSION"
+      --env JETBOT_DEFAULT_CAMERA="$JETBOT_CAMERA" \
+      --restart always \
+      learning_racer:32.5.0
+#      -v /tmp/argus_socket:/tmp/argus_socket \
+#      --workdir /workspace \
+#      --memory= \
+#      
+#      
